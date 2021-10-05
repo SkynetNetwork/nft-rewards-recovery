@@ -2,14 +2,14 @@ from setuptools import setup
 
 if __name__ == '__main__':
     setup(
-        name='fd_cli',
+        name='nft_rewards_recovery',
         version='0.0.1',
         packages=[
             'fd_cli'
         ],
-        url='https://github.com/zqrx/fd-cli',
+        url='https://github.com/SkynetNetwork/nft-rewards-recovery',
         license='GNU General Public License v2.0',
-        author='zqrx',
+        author='SkynetNetwork',
         author_email='',
         description='',
         install_requires=[
@@ -21,7 +21,7 @@ if __name__ == '__main__':
         entry_points={
             'console_scripts': [
                 'fd-cli = fd_cli.fd_cli:main',
-                'flora-dev-cli = fd_cli.fd_cli:main'
+                'nft-rewards-recovery = fd_cli.fd_cli:main'
             ]
         }
     )

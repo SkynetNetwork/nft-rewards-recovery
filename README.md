@@ -74,28 +74,20 @@ Scrip also accepts various parameters. Please remember that you do not have to p
 
 | Parameter | Description | Type | Default | Required? |
 | --- | --- | --- | --- | --- | 
-| `-LAUNCHER_HASH [your_launcher_id]` | Launcher ID of NFT that you want to recover. Can be obtained executing "chia plotnft show" in Chia | `string` | Empty | Yes |
-| `-POOL_CONTRACT_ADDRESS [your_pool_contract_address]` | Pool contract address of NFT that you want to recover. Can be obtained executing "chia plotnft show" in Chia | `string` | Empty | Yes |
+| `-LAUNCHER_HASH [your_launcher_id]` | Launcher ID of NFT that you want to recover. Can be obtained executing "skynet plotnft show" in skynet-blockchain | `string` | Empty | Yes |
+| `-POOL_CONTRACT_ADDRESS [your_pool_contract_address]` | Pool contract address of NFT that you want to recover. Can be obtained executing "skynet plotnft show" in skynet-blockchain | `string` | Empty | Yes |
 | `-fingerprint [wallet_fingerprint]` | Wallet fingerprint. If you have only one wallet, you do not need to provide this, as it will be found automatically | `string` | Empty | No |
 | `-sleep [hours]` | If provided will run script in a infinite loop, repeating recovery in the provided interval | `Integer` | `0` | No |
 | `-nettype [nettype]` | (`mainnet` or `testnet`) Part of the folder path where fork store its data  (please remember that silicoin is using `mainnet` folder) | `string` | `mainnet` | Yes |
-| `-blockchains [fork1], [fork2], [fork3]...` | If not provided will run recovery for `flora`. Array of strings, accepts multiple values separated by comma | `string array` | `flora` | Yes |
+| `-blockchains [fork1], [fork2], [fork3]...` | If not provided will run recovery for `skynet`. Array of strings, accepts multiple values separated by comma | `string array` | `skynet` | Yes |
 
 
 #### Usage examples
 
-* One time recovery of coins in Flora blockchain:
+* One time recovery of coins in skynet-blockchain:
 
-   `./flora_recovery.ps1 -POOL_CONTRACT_ADDRESS [your_pool_contract_address] -LAUNCHER_HASH [your_launcher_id]`   
+   `./skynet_recovery.ps1 -POOL_CONTRACT_ADDRESS [your_pool_contract_address] -LAUNCHER_HASH [your_launcher_id]`   
 
-* One time recovery of coins in Flora blockchain when multiple wallet are available:
+* One time recovery of coins in skynet-blockchain when multiple wallet are available:
 
-   `./flora_recovery.ps1 -POOL_CONTRACT_ADDRESS [your_pool_contract_address] -LAUNCHER_HASH [your_launcher_id] -fingerprint [wallet_fingerprint]`   
-
-* One time recovery of coins in Flora and Silicoin blockchains:
-
-   `./flora_recovery.ps1 -POOL_CONTRACT_ADDRESS [your_pool_contract_address] -LAUNCHER_HASH [your_launcher_id] -blockchains flora, silicoin`   
-
-* Recovery of coins in Flora and Silicoin blockchains in a loop, executing the recovery every 24 hours:
-
-   `./flora_recovery.ps1 -POOL_CONTRACT_ADDRESS [your_pool_contract_address] -LAUNCHER_HASH [your_launcher_id] -blockchains flora, silicoin -sleep 24`
+   `./skynet_recovery.ps1 -POOL_CONTRACT_ADDRESS [your_pool_contract_address] -LAUNCHER_HASH [your_launcher_id] -fingerprint [wallet_fingerprint]`   

@@ -15,7 +15,6 @@ function Install-fdcli {
     }
     else
     {
-        
         Set-Location $Env:Userprofile
         git clone https://github.com/SkynetNetwork/nft-rewards-recovery.git
         write-log "nft-rewards-recovery not present. Installing"  
@@ -90,11 +89,11 @@ function Get-Blockckchaindb {
         write-log "Unsuported. Multiple Blockchain DB files found. Exiting"
         Foreach ($blockchaindb in $blockchaindbfiles)
         {
-        $name =  $blockchaindb.FullName
-        $created = $blockchaindb.CreationTime
-        $updated = $blockchaindb.LastWriteTime
-        
-        write-log "Name: $name, Created: $created, Updated: $updated"
+            $name =  $blockchaindb.FullName
+            $created = $blockchaindb.CreationTime
+            $updated = $blockchaindb.LastWriteTime
+
+            write-log "Name: $name, Created: $created, Updated: $updated"
         }
         Terminate        
     }  
@@ -139,8 +138,6 @@ function Run-Recovery
     deactivate
     Pop-Location
     Write-log "Finished the nft-rewards-recovery proces"
-   
-    
 }
 
 $fdcli_check = "$Env:Userprofile\nft-rewards-recovery\venv\Scripts\activate" 

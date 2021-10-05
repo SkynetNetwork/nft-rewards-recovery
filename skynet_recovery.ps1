@@ -2,7 +2,7 @@
     [string]$fingerprint,
     [int]$sleep = 0,
     [string]$nettype = "mainnet", 
-    [string[]]$blockchains = "flora",
+    [string[]]$blockchains = "skynet",
     [Parameter(Mandatory=$True)][string]$LAUNCHER_HASH,
     [Parameter(Mandatory=$True)][string]$POOL_CONTRACT_ADDRESS)
 
@@ -11,15 +11,15 @@ Push-Location
 
 function Install-fdcli {
     if (Test-Path $fdcli_check -PathType Leaf) {
-        write-log "fd-cli already installed"
+        write-log "nft-rewards-recovery already installed"
     }
     else
     {
         
         Set-Location $Env:Userprofile
-        git clone https://github.com/Flora-Network/fd-cli
-        write-log "fd-cli not present. Installing"  
-        Set-Location fd-cli
+        git clone https://github.com/SkynetNetwork/nft-rewards-recovery.git
+        write-log "nft-rewards-recovery not present. Installing"  
+        Set-Location nft-rewards-recovery
         python -m venv venv
         .\venv\Scripts\activate
         pip install -e . --extra-index-url https://pypi.chia.net/simple/
@@ -131,20 +131,20 @@ function Terminate {
 }
 function Run-Recovery 
 {
-    Write-log "Started the fd-cli recovery proces for $blockchain"
-    Set-Location $Env:Userprofile\fd-cli
+    Write-log "Started the nft-rewards-recovery proces for $blockchain"
+    Set-Location $Env:Userprofile\nft-rewards-recovery
     .\venv\Scripts\activate
-    $fdcli_output = fd-cli nft-recover -l $LAUNCHER_HASH -p $POOL_CONTRACT_ADDRESS -nh 127.0.0.1 -np $RpcPort -ct $blockchainpath/config/ssl/full_node/private_full_node.crt -ck $blockchainpath/config/ssl/full_node/private_full_node.key  | Out-String
+    $fdcli_output = nft-rewards-recovery nft-recover -l $LAUNCHER_HASH -p $POOL_CONTRACT_ADDRESS -nh 127.0.0.1 -np $RpcPort -ct $blockchainpath/config/ssl/full_node/private_full_node.crt -ck $blockchainpath/config/ssl/full_node/private_full_node.key  | Out-String
     Write-log $fdcli_output
     deactivate
     Pop-Location
-    Write-log "Finished the fd-cli recovery proces"
+    Write-log "Finished the nft-rewards-recovery proces"
    
     
 }
 
-$fdcli_check = "$Env:Userprofile\fd-cli\venv\Scripts\activate" 
-$LogFile = "$Env:Userprofile\fd-cli\fd-cli-output.log"
+$fdcli_check = "$Env:Userprofile\nft-rewards-recovery\venv\Scripts\activate" 
+$LogFile = "$Env:Userprofile\nft-rewards-recovery\nft-rewards-recovery-output.log"
 Install-fdcli
 
 Do {

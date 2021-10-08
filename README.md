@@ -4,7 +4,7 @@
 git clone https://github.com/SkynetNetwork/nft-rewards-recovery.git
 ```
 ```shell
-cd fd-cli
+cd nft-rewards-recovery
 ```
 ```shell
 python3 -m venv venv
